@@ -17,6 +17,10 @@ import bgChildHero from "./assets/images/bg_child_hero.png";
 import bgChild from "./assets/images/bg_child.png";
 import furniture1 from "./assets/images/img-2.png";
 import furniture2 from "./assets/images/img-3.png";
+import client1 from "./assets/images/client-img1.png";
+import client2 from "./assets/images/client-img2.png";
+
+import actiVid1 from "./assets/videos/ngay_quan_doi_ndvn.mp4";
 
 const slides = [1, 2, 3];
 
@@ -31,25 +35,25 @@ function Main() {
       name: "Cô Nguyễn Thị Hồng",
       role: "Giáo viên chủ nhiệm",
       desc: "Có hơn 10 năm kinh nghiệm trong việc chăm sóc và giáo dục trẻ mầm non, luôn tận tâm và yêu thương trẻ.",
-      img: "../src/assets/images/client-img1.png",
+      img: client1,
     },
     {
       name: "Cô Trần Thị Phúc",
       role: "Giáo viên mầm non",
       desc: "Chuyên xây dựng các hoạt động học tập sáng tạo, giúp trẻ phát triển tư duy và kỹ năng xã hội.",
-      img: "../src/assets/images/client-img2.png",
+      img: client2,
     },
     {
       name: "Cô Lê Thị Mai",
       role: "Giáo viên năng khiếu",
       desc: "Phụ trách các lớp vẽ, âm nhạc và vận động, tạo môi trường học tập vui vẻ và năng động cho trẻ.",
-      img: "../src/assets/images/client-img1.png",
+      img: client1,
     },
     {
       name: "Cô Phạm Thị Lan",
       role: "Giáo viên chăm sóc",
       desc: "Luôn quan tâm đến dinh dưỡng, sức khỏe và sinh hoạt hằng ngày của trẻ tại trường.",
-      img: "../src/assets/images/client-img2.png",
+      img: client2,
     },
   ];
 
@@ -231,11 +235,7 @@ function Main() {
           {/* Section 1 */}
           <div className="relative flex flex-col md:flex-row items-center mb-16">
             <div className="md:w-1/2 w-full flex justify-end md:border-r md:pr-16 mb-8 md:m-0">
-              <img
-                src={furniture2}
-                alt=""
-                className="md:w-[30vw] w-full h-72 rounded-sm bg-(--bg-opacity) p-6"
-              />
+              <video src={actiVid1} className="md:w-[30vw] w-full h-72 rounded-sm bg-(--bg-opacity) p-6 object-cover" controls poster={furniture2}></video>
             </div>
 
             <div className="md:w-1/2 w-full border-l border-hidden h-full! md:pl-16">
@@ -262,11 +262,7 @@ function Main() {
             </div>
 
             <div className="md:w-1/2 w-full order-1 md:order-2 md:border-l md:pl-16 mb-8 md:m-0">
-              <img
-                src={furniture2}
-                alt=""
-                className="md:w-[30vw] w-full h-72 rounded-sm bg-(--bg-opacity) p-6"
-              />
+              <video src={actiVid1} className="md:w-[30vw] w-full h-72 rounded-sm bg-(--bg-opacity) p-6 object-cover" controls poster={furniture2}></video>
             </div>
 
             <ChefHat className="absolute md:top-1/2 md:left-1/2 top-2 right-2 md:-translate-x-1/2 md:-translate-y-1/2 drop-shadow-[0_4px_4px_var(--bg-button)] size-12" />
@@ -275,11 +271,7 @@ function Main() {
           {/* Section 3 */}
           <div className="relative flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 w-full flex justify-end md:border-r md:pr-16 mb-8 md:m-0">
-              <img
-                src={furniture2}
-                alt=""
-                className="md:w-[30vw] w-full h-72 rounded-sm bg-(--bg-opacity) p-6"
-              />
+              <video src={actiVid1} className="md:w-[30vw] w-full h-72 rounded-sm bg-(--bg-opacity) p-6 object-cover" controls poster={furniture2}></video>
             </div>
 
             <div className="md:w-1/2 w-full md:pl-16 md:border-l md:border-hidden">
