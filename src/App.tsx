@@ -12,13 +12,18 @@ import Loading from "./components/Loading";
 
 import { ArrowLeft, ArrowRight, ArrowUp, Play, ChefHat, Drum, Medal, ChevronLeft, ChevronRight } from "lucide-react";
 
-import img from "./assets/images/bg.png";
+import bgTeacherHero from "./assets/images/bg_teacher_hero.png";
+import bgChildHero from "./assets/images/bg_child_hero.png";
+import bgChild from "./assets/images/bg_child.png";
+import furniture1 from "./assets/images/img-2.png";
+import furniture2 from "./assets/images/img-3.png";
 
 const slides = [1, 2, 3];
 
 function Main() {
   const [current, setCurrent] = useState(0);
   const [index, setIndex] = useState(0);
+  const [itemsPerSlide, setItemsPerSlide] = useState(1)
   const [visible, setVisible] = useState(false)
 
   const teachers = [
@@ -56,9 +61,6 @@ function Main() {
     setCurrent((prev) => (prev + 1) % slides.length);
   };
 
-  const itemsPerSlide = 2;
-  const maxIndex = Math.ceil(teachers.length / itemsPerSlide) - 1;
-
   const scrollToTop = () => {
     const start = window.scrollY;
     const duration = 200;
@@ -78,6 +80,8 @@ function Main() {
     requestAnimationFrame(animate);
   }
 
+  const maxIndex = Math.ceil(teachers.length / itemsPerSlide) - 1;
+
   useEffect(() => {
     document.title = "MẦM NON HỒNG PHÚC";
 
@@ -88,6 +92,23 @@ function Main() {
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+
+    const updateItems = () => {
+      setItemsPerSlide(mq.matches ? 2 : 1);
+    }
+
+    updateItems();
+    mq.addEventListener("change", updateItems);
+
+    return () => mq.removeEventListener("change", updateItems);
+  }, [])
+
+  useEffect(() => {
+    setIndex(0);
+  }, [itemsPerSlide]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -123,35 +144,37 @@ function Main() {
                   </div>
 
                   <div className="md:w-5/6 sm:w-full bg-(--bg-opacity) py-3 px-4 rounded-xl">
-                    <div className="md:flex sm:flex-col gap-1 justify-center">
+                    <div className="flex md:flex-row flex-col gap-1 justify-center">
                       <img
-                        src={img}
+                        src={bgTeacherHero}
                         alt=""
-                        className="md:w-1/2 sm:w-full sm:h-92! object-cover rounded-xl md:h-144"
+                        className="md:w-1/2 sm:w-full h-92 object-cover rounded-xl md:h-144"
                       />
                       <img
-                        src={img}
+                        src={bgChildHero}
                         alt=""
-                        className="md:w-1/2 sm:w-full sm:h-92! object-cover rounded-xl md:h-144"
+                        className="md:w-1/2 sm:w-full h-92 object-cover rounded-xl md:h-144"
                       />
                     </div>
                   </div>
                 </div>
 
                 {/* Controls trong slide */}
-                <button
-                  onClick={prevSlide}
-                  className="absolute md:left-[58.2%] left-[50%] md:top-[45%] top-[55%] -translate-x-1/2 -translate-y-1/2 bg-(--bg-button) hover:bg-(--bg-button) p-2 shadow rounded-full cursor-pointer transition"
-                >
-                  <ArrowLeft className="w-6 h-6 size-8! text-white" />
-                </button>
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 translate-y-1/10 md:left-[58.1%] flex flex-col gap-4">
+                  <button
+                    onClick={prevSlide}
+                    className="bg-(--bg-button) hover:bg-(--bg-button) p-2 shadow rounded-full cursor-pointer transition"
+                  >
+                    <ArrowLeft className="w-6 h-6 size-8! text-white" />
+                  </button>
 
-                <button
-                  onClick={nextSlide}
-                  className="absolute md:left-[58.2%] left-[50%] md:top-[55%] top-[68%] -translate-x-1/2 -translate-y-1/2 bg-white hover:bg-(--bg-button) group p-2 shadow rounded-full cursor-pointer transition"
-                >
-                  <ArrowRight className="w-6 h-6 size-8! text-black group-hover:text-white" />
-                </button>
+                  <button
+                    onClick={nextSlide}
+                    className="bg-white hover:bg-(--bg-button) group p-2 shadow rounded-full cursor-pointer transition"
+                  >
+                    <ArrowRight className="w-6 h-6 size-8! text-black group-hover:text-white" />
+                  </button>
+                </div>
               </div>
             ))}
           </div>
@@ -171,21 +194,21 @@ function Main() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
 
             <div className="relative group overflow-hidden rounded-xl">
-              <img src="../src/assets/images/img-2.png" alt="" className="w-full h-full object-cover group-hover:scale-110 transition duration-600" />
+              <img src={furniture1} alt="" className="w-full h-full object-cover group-hover:scale-110 transition duration-600" />
             </div>
 
             <div className="flex flex-col gap-6">
               <div className="relative group overflow-hidden rounded-xl">
-                <img src="../src/assets/images/img-2.png" alt="" className="w-full h-full object-cover group-hover:scale-110 transition duration-600" />
+                <img src={furniture1} alt="" className="w-full h-full object-cover group-hover:scale-110 transition duration-600" />
               </div>
 
               <div className="relative group overflow-hidden rounded-xl">
-                <img src="../src/assets/images/img-2.png" alt="" className="w-full h-full object-cover group-hover:scale-110 transition duration-600" />
+                <img src={furniture1} alt="" className="w-full h-full object-cover group-hover:scale-110 transition duration-600" />
               </div>
             </div>
 
             <div className="relative group overflow-hidden rounded-xl">
-              <img src="../src/assets/images/img-2.png" alt="" className="w-full h-full object-cover group-hover:scale-110 transition duration-600" />
+              <img src={furniture1} alt="" className="w-full h-full object-cover group-hover:scale-110 transition duration-600" />
             </div>
 
           </div>
@@ -207,15 +230,15 @@ function Main() {
 
           {/* Section 1 */}
           <div className="relative flex flex-col md:flex-row items-center mb-16">
-            <div className="md:w-1/2 flex justify-end border-r pr-16">
+            <div className="md:w-1/2 w-full flex justify-end md:border-r md:pr-16 mb-8 md:m-0">
               <img
-                src="../src/assets/images/img-3.png"
+                src={furniture2}
                 alt=""
-                className="w-[30vw] h-72 rounded-sm bg-(--bg-opacity) p-6"
+                className="md:w-[30vw] w-full h-72 rounded-sm bg-(--bg-opacity) p-6"
               />
             </div>
 
-            <div className="md:w-1/2 border-l border-hidden h-full! pl-16">
+            <div className="md:w-1/2 w-full border-l border-hidden h-full! md:pl-16">
               <h3 className="text-3xl font-bold text-white mb-4">
                 Ca - <span className="text-gray-600">múa - </span> nhạc
               </h3>
@@ -224,13 +247,13 @@ function Main() {
               </p>
             </div>
 
-            <Drum className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_4px_4px_var(--bg-button)] size-12" />
+            <Drum className="absolute md:top-1/2 md:left-1/2 top-2 left-2 md:-translate-x-1/2 md:-translate-y-1/2 drop-shadow-[0_4px_4px_var(--bg-button)] size-12" />
           </div>
 
           {/* Section 2 */}
           <div className="relative flex flex-col md:flex-row items-center mb-16">
-            <div className="md:w-1/2 order-2 md:order-1 pr-16 border-r border-hidden">
-              <h3 className="text-3xl font-bold text-white mb-4">
+            <div className="md:w-1/2 w-full order-2 md:order-1 md:pr-16 md:border-r md:border-hidden">
+              <h3 className="text-3xl font-bold text-white mb-4 text-right md:text-left">
                 Nhập vai <span className="text-gray-600">nghề nghiệp</span>
               </h3>
               <p className="text-gray-200 mb-6 leading-relaxed text-justify">
@@ -238,28 +261,28 @@ function Main() {
               </p>
             </div>
 
-            <div className="md:w-1/2 order-1 md:order-2 border-l pl-16">
+            <div className="md:w-1/2 w-full order-1 md:order-2 md:border-l md:pl-16 mb-8 md:m-0">
               <img
-                src="../src/assets/images/img-3.png"
+                src={furniture2}
                 alt=""
-                className="w-[30vw] h-72 rounded-sm bg-(--bg-opacity) p-6"
+                className="md:w-[30vw] w-full h-72 rounded-sm bg-(--bg-opacity) p-6"
               />
             </div>
 
-            <ChefHat className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_4px_4px_var(--bg-button)] size-12" />
+            <ChefHat className="absolute md:top-1/2 md:left-1/2 top-2 right-2 md:-translate-x-1/2 md:-translate-y-1/2 drop-shadow-[0_4px_4px_var(--bg-button)] size-12" />
           </div>
 
           {/* Section 3 */}
           <div className="relative flex flex-col md:flex-row items-center">
-            <div className="md:w-1/2 flex justify-end border-r pr-16">
+            <div className="md:w-1/2 w-full flex justify-end md:border-r md:pr-16 mb-8 md:m-0">
               <img
-                src="../src/assets/images/img-3.png"
+                src={furniture2}
                 alt=""
-                className="w-[30vw] h-72 rounded-sm bg-(--bg-opacity) p-6"
+                className="md:w-[30vw] w-full h-72 rounded-sm bg-(--bg-opacity) p-6"
               />
             </div>
 
-            <div className="md:w-1/2 pl-16 border-l border-hidden">
+            <div className="md:w-1/2 w-full md:pl-16 md:border-l md:border-hidden">
               <h3 className="text-3xl font-bold text-white mb-4">
                 Thi đấu <span className="text-gray-600">tranh tài</span>
               </h3>
@@ -268,7 +291,7 @@ function Main() {
               </p>
             </div>
 
-            <Medal className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 drop-shadow-[0_4px_4px_var(--bg-button)] size-12" />
+            <Medal className="absolute md:top-1/2 md:left-1/2 top-2 left-2 md:-translate-x-1/2 md:-translate-y-1/2 drop-shadow-[0_4px_4px_var(--bg-button)] size-12" />
           </div>
         </div>
       </section>
@@ -287,7 +310,7 @@ function Main() {
         >
           {Array.from({ length: maxIndex + 1 }).map((_, slideIndex) => (
             <div key={slideIndex} className="w-full shrink-0">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:px-30 px-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:px-30 px-8">
                 {teachers
                   .slice(
                     slideIndex * itemsPerSlide,
@@ -297,16 +320,16 @@ function Main() {
                     <div key={i} className="md:flex gap-6 items-start">
                       <img
                         src={teacher.img}
-                        className="w-44 h-32 object-cover bg-(--bg-opacity) py-2 px-4 rounded-xs"
+                        className="w-44 h-32 object-cover bg-(--bg-opacity) py-2 px-4 rounded-xs md:m-0 mb-4"
                       />
                       <div>
                         <div className="md:flex flex-col">
-                          <h3 className="text-xl font-semibold text-(--primary-color)">
-                          {teacher.name}
-                        </h3>
-                        <p className="text-sm text-gray-600">
-                          {teacher.role}
-                        </p>
+                          <h3 className="text-xl font-semibold text-(--primary-color) md:mb-[.5em]! mb-[.1em]!">
+                            {teacher.name}
+                          </h3>
+                          <p className="text-sm text-gray-600 md:mb-[.5em]! mb-[.1em]!">
+                            {teacher.role}
+                          </p>
                         </div>
                         <p className="text-gray-400 leading-relaxed">
                           {teacher.desc}
@@ -321,14 +344,14 @@ function Main() {
 
         <button
           onClick={() => setIndex(index === 0 ? maxIndex : index - 1)}
-          className="absolute left-0 top-1/2 -translate-y-1/2 p-3 text-white hover:scale-110 transition"
+          className="absolute md:left-0 -left-5 top-1/2 -translate-y-1/2 p-3 text-white hover:scale-110 transition"
         >
           <ChevronLeft size={32} color="var(--primary-color)" />
         </button>
 
         <button
           onClick={() => setIndex(index === maxIndex ? 0 : index + 1)}
-          className="absolute right-0 top-1/2 -translate-y-1/2 p-3 text-white hover:scale-110 transition"
+          className="absolute md:right-0 -right-5 top-1/2 -translate-y-1/2 p-3 text-white hover:scale-110 transition"
         >
           <ChevronRight size={32} color="var(--primary-color)" />
         </button>
@@ -339,17 +362,17 @@ function Main() {
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex flex-col md:flex-row items-center gap-8">
 
-            <div className="md:w-1/2 pr-8">
-              <h2 className="md:text-4xl text-3xl font-exrabold text-gray-700 uppercase mb-4">
-                Giới thiệu <span className="text-white">Hồng Phúc</span>
+            <div className="md:w-1/2 w-full md:pr-8 relative">
+              <h2 className="md:text-4xl text-center md:text-left text-3xl font-exrabold text-gray-700 uppercase mb-4">
+                Giới thiệu về <span className="text-white">Hồng Phúc</span>
               </h2>
 
-              <p className="text-gray-100 leading-relaxed mb-6 text-lg indent-6 text-justify">
+              <p className="text-gray-100 leading-relaxed md:mb-6 m-0! text-lg indent-6 text-justify">
                 Trường Mầm Non Hồng Phúc được thành lập với mong muốn góp phần xây dựng một môi trường giáo dục sớm chất lượng cho trẻ em địa phương. Trải qua quá trình hình thành và phát triển, nhà trường không ngừng hoàn thiện cơ sở vật chất, chương trình chăm sóc – giáo dục và đội ngũ nhân sự để đáp ứng nhu cầu ngày càng cao của phụ huynh. Từ những ngày đầu còn nhiều khó khăn, Hồng Phúc từng bước khẳng định uy tín bằng sự tận tâm, trách nhiệm và niềm tin yêu của phụ huynh, trở thành nơi gửi gắm tuổi thơ của nhiều thế hệ mầm non.
               </p>
 
               <div
-                className="relative w-18 h-18 mt-12 bg-gray-800 rounded-full flex items-center justify-center cursor-pointer transition group 
+                className="md:flex md:relative md:top-0 md:left-0 md:ml-14 absolute -bottom-[45%] z-50 left-1/2 -translate-x-1/2 w-18 h-18 md:mt-12 mt-0 bg-gray-800 rounded-full flex items-center justify-center cursor-pointer transition group 
                             after:content-[''] after:absolute after:inset-0 after:rounded-full after:bg-white after:opacity-30 after:animate-ping
                             before:content-[''] before:absolute before:-inset-1 before:rounded-full before:bg-white before:opacity-30 before:animate-ping delay-300"
               >
@@ -359,11 +382,11 @@ function Main() {
 
             <div className="relative md:w-1/2 flex justify-center">
               <img
-                src={img}
+                src={bgChild}
                 alt="About"
                 className="max-w-full h-auto shadow-lg rounded-xs"
               />
-              <div className="absolute -z-1 bg-(--bg-opacity) -bottom-4 -left-4 w-52 h-42"></div>
+              <div className="absolute -z-1 bg-(--bg-opacity) -bottom-4 md:-left-4 -left-3 w-52 h-42"></div>
             </div>
 
           </div>
