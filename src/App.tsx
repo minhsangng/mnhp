@@ -114,25 +114,25 @@ function Main() {
                 className="min-w-full px-4 relative"
               >
                 {/* Nội dung slide */}
-                <div className="flex">
-                  <div className="relative h-full w-1/6 pr-4 overflow-visible">
-                    <h1 className="absolute -left-24 top-48 whitespace-nowrap text-4xl/24 font-bold uppercase -rotate-90 ">
+                <div className="md:flex">
+                  <div className="relative h-full md:w-1/6 pr-4 overflow-visible">
+                    <h1 className="md:absolute -left-24 top-48 whitespace-nowrap md:text-4xl/24 text-xl/14 font-bold uppercase md:-rotate-90 ">
                       Trường Mầm non <br />
-                      <span className="text-gray-700 text-[6rem]">HỒNG PHÚC</span>
+                      <span className="text-gray-700 md:text-[6rem] text-6xl">HỒNG PHÚC</span>
                     </h1>
                   </div>
 
-                  <div className="w-5/6 bg-(--bg-opacity) py-3 px-4 rounded-xl">
-                    <div className="flex gap-1 justify-center">
+                  <div className="md:w-5/6 sm:w-full bg-(--bg-opacity) py-3 px-4 rounded-xl">
+                    <div className="md:flex sm:flex-col gap-1 justify-center">
                       <img
                         src={img}
                         alt=""
-                        className="w-1/2 object-cover rounded-xl h-144"
+                        className="md:w-1/2 sm:w-full sm:h-92! object-cover rounded-xl md:h-144"
                       />
                       <img
                         src={img}
                         alt=""
-                        className="w-1/2 object-cover rounded-xl h-144"
+                        className="md:w-1/2 sm:w-full sm:h-92! object-cover rounded-xl md:h-144"
                       />
                     </div>
                   </div>
@@ -141,14 +141,14 @@ function Main() {
                 {/* Controls trong slide */}
                 <button
                   onClick={prevSlide}
-                  className="absolute left-[58.2%] top-[45%] -translate-x-1/2 -translate-y-1/2 bg-(--bg-button) hover:bg-(--bg-button) p-2 shadow rounded-full cursor-pointer transition"
+                  className="absolute md:left-[58.2%] left-[50%] md:top-[45%] top-[55%] -translate-x-1/2 -translate-y-1/2 bg-(--bg-button) hover:bg-(--bg-button) p-2 shadow rounded-full cursor-pointer transition"
                 >
                   <ArrowLeft className="w-6 h-6 size-8! text-white" />
                 </button>
 
                 <button
                   onClick={nextSlide}
-                  className="absolute left-[58.2%] top-[55%] -translate-x-1/2 -translate-y-1/2 bg-white hover:bg-(--bg-button) group p-2 shadow rounded-full cursor-pointer transition"
+                  className="absolute md:left-[58.2%] left-[50%] md:top-[55%] top-[68%] -translate-x-1/2 -translate-y-1/2 bg-white hover:bg-(--bg-button) group p-2 shadow rounded-full cursor-pointer transition"
                 >
                   <ArrowRight className="w-6 h-6 size-8! text-black group-hover:text-white" />
                 </button>
@@ -162,7 +162,7 @@ function Main() {
       <section className="py-12" id="furniture">
         <div className="max-w-7xl mx-auto px-4">
 
-          <h1 className="text-4xl font-bold text-gray-700 text-center uppercase mb-4">
+          <h1 className="md:text-4xl text-3xl font-bold text-gray-700 text-center uppercase mb-4">
             Cơ sở <span className="text-white"> vật chất</span>
           </h1>
 
@@ -197,7 +197,7 @@ function Main() {
         <div className="max-w-7xl mx-auto px-4">
 
           <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-700 uppercase mb-2">
+            <h1 className="md:text-4xl text-3xl font-bold text-gray-700 uppercase mb-2">
               Hoạt động <span className="text-white">Trải nghiệm</span>
             </h1>
             <p className="text-gray-200">
@@ -275,7 +275,7 @@ function Main() {
 
       {/* Teams Section */}
       <section className="relative overflow-hidden bg-white py-12" id="team">
-        <h3 className="text-4xl font-bold text-gray-700 uppercase mb-12 pl-30">
+        <h3 className="md:text-4xl text-3xl font-bold text-gray-700 uppercase mb-12 md:pl-30 md:text-left text-center">
           Đội ngũ <span className="text-white bg-(--bg-button) px-4 pt-2">Giáo viên</span>
         </h3>
 
@@ -287,31 +287,32 @@ function Main() {
         >
           {Array.from({ length: maxIndex + 1 }).map((_, slideIndex) => (
             <div key={slideIndex} className="w-full shrink-0">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 px-30">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:px-30 px-6">
                 {teachers
                   .slice(
                     slideIndex * itemsPerSlide,
                     slideIndex * itemsPerSlide + itemsPerSlide
                   )
                   .map((teacher, i) => (
-                    <div key={i} className="flex gap-6 items-start">
+                    <div key={i} className="md:flex gap-6 items-start">
                       <img
                         src={teacher.img}
                         className="w-44 h-32 object-cover bg-(--bg-opacity) py-2 px-4 rounded-xs"
                       />
                       <div>
-                        <h3 className="text-xl font-semibold text-(--primary-color)">
+                        <div className="md:flex flex-col">
+                          <h3 className="text-xl font-semibold text-(--primary-color)">
                           {teacher.name}
                         </h3>
                         <p className="text-sm text-gray-600">
                           {teacher.role}
                         </p>
+                        </div>
                         <p className="text-gray-400 leading-relaxed">
                           {teacher.desc}
                         </p>
                       </div>
                     </div>
-
                   ))}
               </div>
             </div>
@@ -339,7 +340,7 @@ function Main() {
           <div className="flex flex-col md:flex-row items-center gap-8">
 
             <div className="md:w-1/2 pr-8">
-              <h2 className="text-4xl font-exrabold text-gray-700 uppercase mb-4">
+              <h2 className="md:text-4xl text-3xl font-exrabold text-gray-700 uppercase mb-4">
                 Giới thiệu <span className="text-white">Hồng Phúc</span>
               </h2>
 
@@ -372,7 +373,7 @@ function Main() {
       {/* Contact Section */}
       <section className="py-12" id="contact">
         <div className="max-w-7xl mx-auto px-6">
-          <h3 className="text-4xl font-bold text-gray-700 text-center uppercase mb-16">
+          <h3 className="md:text-4xl text-3xl font-bold text-gray-700 text-center uppercase mb-16">
             Liên hệ <span className="text-white">chúng tôi</span>
           </h3>
 
