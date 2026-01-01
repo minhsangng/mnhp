@@ -1,0 +1,36 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "Qojarun";
+  src: url("./assets/fonts/DFVN-Qojarun.otf") format("opentype");
+}
+
+:root {
+  font-family: "Qojarun" !important;
+  color: #f6f6f6;
+  background: var(--bg);
+
+  --bg: #2ea0f8;
+  --bg-opacity: rgba(138, 186, 222, 0.8);
+  --bg-button: #90ccfa;
+
+  --primary-color: #962d3e;
+}
+
+@keyframes leaf-fall {
+  0% {
+    transform: translateY(-10vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0.2;
+  }
+}
+
+* {
+  font-family: "Qojarun" !important;
+}

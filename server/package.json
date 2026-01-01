@@ -1,0 +1,35 @@
+{
+  "name": "mnhp",
+  "version": "1.0.0",
+  "description": "kind garden management system",
+  "main": "src/server.js",
+  "scripts": {
+    "dev": "nodemon src/server.js",
+    "start": "node src/server.js"
+  },
+  "keywords": [],
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@neondatabase/serverless": "^1.0.0",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "cron": "^4.3.0",
+    "crypto": "^1.0.1",
+    "dotenv": "^16.5.0",
+    "drizzle-orm": "^0.44.2",
+    "expo-secure-store": "^15.0.7",
+    "expo-server-sdk": "^4.0.0",
+    "express": "^5.2.1",
+    "express-rate-limit": "^8.2.1",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^2.0.2",
+    "nodemailer": "^7.0.11",
+    "uuid": "^13.0.0"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.31.1",
+    "nodemon": "^3.1.10"
+  }
+}
